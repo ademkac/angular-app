@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-xs-10">
+        <app-shopping-edit></app-shopping-edit>
+        <hr>
+        
+        <p class="pull-left" style="font-weight: bold;">Name of product</p>
+        <span class="pull-right" style="font-weight: bold;">Quantity</span>
+        <br>
+        <hr>
+        <div *ngIf="phoneBrands.length === 0" class="alert alert-info">Your Cart is Empty.</div>
+        <ul class="list-group">
+            <a 
+            class="list-group-item"
+            style="cursor: pointer;"
+            *ngFor="let brand of phoneBrands; let i = index" 
+            (click) = "onEditItem(i)"
+            >
+            {{brand.name}}  <span class="badge badge-primary badge-pill">({{brand.amount}})</span>
+            </a>
+            <li class="list-group-item active">
+                <strong>Total: </strong> {{ cartTotal | currency: 'EUR'}}
+              </li>
+        </ul>
+        
+    </div>
+</div>
