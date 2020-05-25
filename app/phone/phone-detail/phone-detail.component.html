@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-xs-12">
+        <img 
+        [src]="phone.imagePath" 
+        alt="{{ phone.name }}"
+        class="img-responsive"
+        style="max-height: 300px;">
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <h1>{{phone.name}}</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <button 
+        *ngIf="!userID" 
+        class="btn btn-success" 
+        (click)="onAddToShoppingList()"
+        style="margin-bottom: 10px;">To Shopping List</button>
+
+        <div class="btn-group"
+        *ngIf="userID"
+        appDropdown>
+            <button
+            style="margin-bottom: 10px;"
+            type="button"
+            class="btn btn-primary dropdown-toggle">
+            Menage Phone <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a (click)="onAddToShoppingList()" style="cursor: pointer;">To Shopping List</a></li>
+                <li ><a style="cursor: pointer;" (click) = "onEditPhone()">Edit Phone</a></li>
+                <li ><a style="cursor: pointer;" (click) = "onDeletePhone()">Delete Phone</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+    <p style="font-weight: bold; font-size: large;">Memory phone: {{ phone.description }} </p> 
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+      <p style="font-weight: bold; font-size: large;">Phone price: {{phone.price | currency: 'EUR'}}</p>  
+    </div>
+</div>

@@ -1,0 +1,127 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form [formGroup] = "phoneForm" (ngSubmit) = "onSubmit()">
+            <div class="row">
+                <div class="col-xs-12">
+                    <button 
+                    style="margin-right: 10px;"
+                    type="submit" 
+                    class="btn btn-success"
+                    [disabled]="!phoneForm.valid"
+                    >Save</button>
+                    <button type="button" class="btn btn-danger" (click) = "onCancel()">Cancel</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input 
+                        type="text" 
+                        id="name"
+                        formControlName= "name" 
+                        class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="imagePath">Image Url</label>
+                        <input 
+                        type="text" 
+                        id="imagePath"
+                        formControlName="imagePath" 
+                        class="form-control"
+                        #imagePath>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                   <img [src]="imagePath.value" class="img-responsive">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea 
+                        type="text" 
+                        id="description" 
+                        formControlName="description"
+                        class="form-control"
+                        rows="4">
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <label for="price">Price</label>
+                    <div class="row">
+                        <div class="col-xs-10">
+                            <div class="form-group">
+                                <input 
+                                   type="number" 
+                                   id="price"
+                                   formControlName= "price" 
+                                   class="form-control"
+                                   >
+                           </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <h4><span >€</span></h4>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12" formArrayName="brands">
+                    <div 
+                    class="row" 
+                    *ngFor="let brandCtrl of controls; let i = index" 
+                    [formGroupName]="i"
+                    style="margin-top: 10px;">
+                        <div class="col-xs-5">
+                            <input 
+                            type="text" 
+                            class="form-control"
+                            placeholder="name"
+                            formControlName="name">
+                        </div>
+                        <div class="col-xs-4">
+                            <input 
+                            type="number" 
+                            class="form-control"
+                            placeholder="price"
+                            formControlName="cena">
+                        </div>
+                        <div class="col-xs-2">
+                            <input 
+                            type="number" 
+                            class="form-control"
+                            formControlName="amount">
+                        </div>
+                        <div class="col-xs-1">
+                            <button 
+                            class="btn btn-danger"
+                            type="button"
+                            (click) = "onDeleteBrand(i)">
+                                X
+                            </button>
+                        </div>
+                    </div>
+                    <hr>
+                   <div class="row">
+                       <div class="col-xs-12">
+                           <button type="button" class="btn btn-success" (click)="onAddBrand()">Add Model</button>
+                       </div>
+                   </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

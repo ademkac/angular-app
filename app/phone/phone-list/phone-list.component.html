@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-xs 12">
+        
+     <button 
+     class="btn btn-success" 
+     (click) = "onNewPhone()"
+     *ngIf = "admin"> New Phone </button> 
+         <input 
+         *ngIf = "!admin"
+         type="text" 
+         class="form-control" 
+         placeholder="Search" 
+         [(ngModel)] = "filteredStatus"> 
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-xs-12">
+        <app-phone-item
+            *ngFor = "let phoneEl of phones | filter:filteredStatus ; let i = index  "
+            [phone] = "phoneEl"
+            [index] = "i"></app-phone-item>
+    </div>
+</div>
